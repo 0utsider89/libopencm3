@@ -50,6 +50,13 @@
 
 /* NVIC_BASE + 0x020 (0xE000 E120 - 0xE000 E17F): Reserved */
 
+
+/* ICPR: Interrupt Vector Offset Register */
+/* Note: 1 32bit Register */
+#define NVIC_IOVR                       MMIO32(SCB_BASE + 0x08)
+
+/* NVIC_BASE + 0x080 (0xE000 EdA0): Reserved */
+
 /* ICER: Interrupt Clear Enable Registers */
 /* Note: 8 32bit Registers */
 /* Note: Single register on CM0 */

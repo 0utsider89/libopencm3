@@ -163,6 +163,21 @@ void nvic_set_priority(uint8_t irqn, uint8_t priority)
 	}
 }
 
+/*---------------------------------------------------------------------------*/
+/** @brief NVIC Set Vector Interrupt Offset
+ *
+ * This sets up the address of the the vector interrupt table.
+ * The offset is masked by 0x1FFFFF80, this is how they have it in the 
+ * data sheet.  
+ *
+ * @param[in] addr Unsigned int32, offset Unsigned int32. @ref nvic_stm32f1_userint
+ */
+
+void nvic_set_offset(uint32_t addr, uint32_t offset)
+{
+       NVIC_IOVR = addr | (offset & 0x1FFFFF80);
+}
+
 /* Those are defined only on CM3 or CM4 */
 #if defined(__ARM_ARCH_7M__) || defined(__ARM_ARCH_7EM__)
 /*---------------------------------------------------------------------------*/
